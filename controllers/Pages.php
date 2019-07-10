@@ -10,5 +10,13 @@ Class Pages extends Controller {
 
     include("views/template.php");
   }
+
+  public function login() {
+    Users::checkUser();
+  }
+
+  public function userProfile() {
+    Users::saveUser($_GET["userId"]);
+  }
 }
 ?>

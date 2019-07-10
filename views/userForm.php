@@ -14,8 +14,8 @@ if (isset($_GET["userId"])) {
 ?>
 <form action="index.php" method="post">
   <input type="hidden" name="controller" value="pages">
-  <input type="hidden" name="action" value="saveUser">
-  <input type="hidden" name="productId" value="<?=$this->user->id?>">
+  <input type="hidden" name="action" value="userProfile">
+  <input type="hidden" name="userId" value="<?=$this->user->id?>">
 <?php
   if(isset($_GET['invalidName'])) {
     echo '<div class="invalid">Please enter a first and last name.</div>';

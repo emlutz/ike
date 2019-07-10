@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 27, 2019 at 04:04 PM
+-- Generation Time: Jul 10, 2019 at 01:43 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -25,15 +25,48 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `photo`
+-- Table structure for table `category`
 --
 
-DROP TABLE IF EXISTS `photo`;
-CREATE TABLE IF NOT EXISTS `photo` (
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE IF NOT EXISTS `category` (
   `id` mediumint(50) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `memory`
+--
+
+DROP TABLE IF EXISTS `memory`;
+CREATE TABLE IF NOT EXISTS `memory` (
+  `id` mediumint(50) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL,
+  `caption` longtext NOT NULL,
+  `category` mediumint(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `relationship`
+--
+
+DROP TABLE IF EXISTS `relationship`;
+CREATE TABLE IF NOT EXISTS `relationship` (
+  `id` mediumint(50) NOT NULL AUTO_INCREMENT,
+  `userAid` mediumint(50) NOT NULL,
+  `userBid` mediumint(50) NOT NULL,
+  `dateCreated` date NOT NULL,
+  `anniversary` date NOT NULL,
+  `coverPhoto` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -48,6 +81,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` mediumint(50) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `photo` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
