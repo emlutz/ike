@@ -6,6 +6,8 @@ Class Pages extends Controller {
     $this->description = "";
     $this->pageTitle = "Home | ";
 
+    $this->mainBody .= $this->renderView("userForm");
+    $this->mainBody .= $this->renderView("modal");
     $this->mainBody .= $this->renderView("home");
 
     include("views/template.php");
@@ -16,7 +18,7 @@ Class Pages extends Controller {
   }
 
   public function userProfile() {
-    Users::saveUser($_GET["userId"]);
+    Users::saveUser();
   }
 }
 ?>

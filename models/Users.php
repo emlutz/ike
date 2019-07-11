@@ -8,7 +8,7 @@ Class Users {
     $this->photo = $data["photo"];
   }
 
-  public function getUser() {
+  public static function getUser() {
     $con = Db::connect();
     $select = "SELECT * FROM user WHERE id = '".$userId."'";
     $result = mysqli_query($con, $select);
@@ -16,7 +16,7 @@ Class Users {
     return new User($row);
   }
   
-  public function saveUser() {
+  public static function saveUser() {
     $con = Db::connect();
     foreach($_POST as $postVar) {
       $_POST[$postVar] = mysqli_real_escape_string($con, $postVar);
@@ -30,7 +30,7 @@ Class Users {
     }
 
     $password = $_POST['password'];
-    if(!preg_match('/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/', $password)){
+    if(!preg_match('/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$/', $password)){
       $validPassword = false;
     } else {
       $validPassword = true;
@@ -50,6 +50,10 @@ Class Users {
     }
 
     if($validEmail && $validPassword && $validName) {
+      // foreach($_POST as $postVar) {
+      //   var_dump($_POST[$postVar]);
+      // }
+      // die;
       if($_POST["userId"]!="") {
         Db::connect();
         $select = "UPDATE user
@@ -68,17 +72,17 @@ Class Users {
         $verb = "registered";
         return $newUser;
       }
-      header("location: ".$_SERVER['HTTP_REFERER']."&verb");
+      header("location: index.php?controller=pages&action=main&verb=$verb");
     } if(!$validName) {
-      header("location: ../index.php?invalidName");
+      header("location: index.php?controller=pages&action=main&invalidName");
     } if(!$validEmail) {
-      header("location: ../index.php?invalidEmail");
-    } if (!$validComment) {
-      header("location: ../index.php?invalidPassword");
+      header("location: index.php?controller=pages&action=main&invalidEmail");
+    } if (!$validPassword) {
+      header("location: index.php?controller=pages&action=main&invalidPassword");
     }
   }
 
-  public function checkUser() {
+  public static function checkUser() {
     if(isset($_POST['submit'])){
     
       if($_POST['email'] !== ''){
@@ -118,7 +122,7 @@ Class Users {
     }
   }
 
-  public function logout() {
+  public static function logout() {
     session_start();
     $_SESSION['userId'] = false;
     unset($_SESSION);

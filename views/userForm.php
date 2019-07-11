@@ -34,7 +34,7 @@ if (isset($_GET["userId"])) {
   <input type="email" name="email" value="<?=$user['email']?>" title="Enter a valid email address." placeholder="Enter Your Email Address" required>
   
   <label for="password">Password</label>
-  <input type="text" name="password" value="<?=$user['password']?>" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" placeholder="Enter a password">
+  <input type="password" name="password" value="<?=$user['password']?>" pattern="^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$" placeholder="Enter a password">
 
   <label for="photo">Photo</label>
   <img src="assets/<?=$user['photo']?>" alt="User photo">
