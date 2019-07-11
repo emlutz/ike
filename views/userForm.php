@@ -1,5 +1,5 @@
 <form action="index.php" method="post" enctype="multipart/form-data">
-  <input type="hidden" name="controller" value="outside">
+  <input type="hidden" name="controller" value="<?=$this->user->cont?>">
   <input type="hidden" name="action" value="userProfile">
   <input type="hidden" name="userId" value="<?=$this->user->id?>">
 <?php
