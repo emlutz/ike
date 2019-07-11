@@ -1,5 +1,4 @@
 <?php
-echo "hello";
 function autoloadFunction($class) {
   $controllersPath = 'controllers/' . $class . '.php';
   $modelsPath = 'models/' . $class . '.php';
@@ -22,7 +21,7 @@ if (isset($_GET["controller"]) &&  isset($_GET["action"])) {
   $controller = $_GET['controller'];
   $action = $_GET['action'];
 } else {
-  $controller = 'pages';
+  $controller = 'outside';
   $action = 'main';
 }
 
@@ -30,7 +29,9 @@ $controller = ucfirst($controller);
 $cont = new $controller();
 
 if (method_exists($cont, $action)) {
+  $cont->pretrip();
   $cont->$action();
+  $cont->posttrip();
 } else {
   echo "$action not found in $controller";
   die;

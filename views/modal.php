@@ -5,7 +5,7 @@
       <img src="theme/imgs/logo-02.png" alt="">
       <a href="#"><i class="fas fa-times"></i></a>
       <form id=log_frm action="index.php" method="post">
-        <input type="hidden" name="controller" value="pages">
+        <input type="hidden" name="controller" value="outside">
         <input type="hidden" name="action" value="login">
         <div class="container">
           <label for="email"><b>Email</b></label>

@@ -1,11 +1,23 @@
 <?php
 Class Users {
-  public function __construct($data) {
-    $this->id = $data["id"];
-    $this->email = $data["email"];
-    $this->password = $data["password"];
-    $this->name = $data["name"];
-    $this->photo = $data["photo"];
+  public function __construct($data=false) {
+    if ($data){
+      $this->id = $data["id"];
+      $this->email = $data["email"];
+      $this->password = $data["password"];
+      $this->name = $data["name"];
+      $this->photo = $data["photo"];
+      $this->userLoggedIn = true;
+    } else {
+      $this->id = "";
+      $this->email = "";
+      $this->password = "";
+      $this->name = "";
+      $this->photo = "";
+      $this->userLoggedIn = false;
+      
+      $this->id = "";
+    }
   }
 
   public static function getUser() {
@@ -13,6 +25,7 @@ Class Users {
     $select = "SELECT * FROM user WHERE id = '".$userId."'";
     $result = mysqli_query($con, $select);
     $row = mysqli_fetch_assoc($result);
+    
     return new User($row);
   }
   
@@ -30,7 +43,7 @@ Class Users {
     }
 
     $password = $_POST['password'];
-    if(!preg_match('/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$/', $password)){
+    if(!preg_match('/[0-9A-Za-z!@#$%]{8,}/', $password)){
       $validPassword = false;
     } else {
       $validPassword = true;
@@ -72,13 +85,13 @@ Class Users {
         $verb = "registered";
         return $newUser;
       }
-      header("location: index.php?controller=pages&action=main&verb=$verb");
+      header("location: ".$_SERVER['HTTP_REFERER']."&verb=$verb");
     } if(!$validName) {
-      header("location: index.php?controller=pages&action=main&invalidName");
+      header("location: ".$_SERVER['HTTP_REFERER']."&invalidName");
     } if(!$validEmail) {
-      header("location: index.php?controller=pages&action=main&invalidEmail");
+      header("location: ".$_SERVER['HTTP_REFERER']."&invalidEmail");
     } if (!$validPassword) {
-      header("location: index.php?controller=pages&action=main&invalidPassword");
+      header("location: ".$_SERVER['HTTP_REFERER']."&invalidPassword");
     }
   }
 
@@ -111,7 +124,7 @@ Class Users {
               $result = mysqli_fetch_assoc(mysqli_query($con,$select));
               if (isset($result['id'])){
               $_SESSION["userId"] = $result['id'];
-              header("Location: ../index.php?controller=pages&action=main");
+              header("Location: ../index.php?controller=inside&action=main&hello");
               }
             }
           }
@@ -119,6 +132,14 @@ Class Users {
       }else{
         header('Location: index.php?error=true');
       }
+    }
+  }
+
+  public function checkLoggedIn()
+  {
+    if (!$this->userLoggedIn)
+    {
+      header("location: index.php?controller=outside&action=loginform");
     }
   }
 
