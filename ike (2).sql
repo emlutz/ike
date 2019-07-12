@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 10, 2019 at 01:43 AM
+-- Generation Time: Jul 11, 2019 at 11:58 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -38,6 +38,22 @@ CREATE TABLE IF NOT EXISTS `category` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `collection`
+--
+
+DROP TABLE IF EXISTS `collection`;
+CREATE TABLE IF NOT EXISTS `collection` (
+  `id` mediumint(50) NOT NULL AUTO_INCREMENT,
+  `relationshipId` mediumint(50) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
+  `coverPhoto` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `memory`
 --
 
@@ -48,7 +64,8 @@ CREATE TABLE IF NOT EXISTS `memory` (
   `description` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL,
   `caption` longtext NOT NULL,
-  `category` mediumint(50) NOT NULL,
+  `categoryId` mediumint(50) NOT NULL,
+  `collectionId` mediumint(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -82,9 +99,16 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `photo` varchar(255) NOT NULL,
+  `photo` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `password`, `name`, `photo`) VALUES
+(9, 'email@email.com', '$2y$10$xbesXDnF2/p7xgqM39SQR.Hr9lMvK8l7aPxGPRlc15zbHQTd49vMW', 'emily lutz', 'abc.jpg');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
