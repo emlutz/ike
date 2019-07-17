@@ -139,9 +139,11 @@ Class Users {
 
   public function checkLoggedIn()
   {
+    var_dump($_SESSION['userId']);
+    die;
     if (!$this->userLoggedIn)
     {
-      header("location: index.php?controller=outside&action=main");
+      header("location: index.php?controller=outside&action=main&huh");
     }
   }
 
