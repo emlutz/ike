@@ -21,13 +21,13 @@ Class Users {
     }
   }
 
-  public static function getUser() {
+  public static function getUser($userId) {
     $con = Db::connect();
     $select = "SELECT * FROM user WHERE id = '".$userId."'";
     $result = mysqli_query($con, $select);
     $row = mysqli_fetch_assoc($result);
     
-    return new User($row);
+    return new Users($row);
   }
   
   public static function saveUser() {
@@ -121,12 +121,13 @@ Class Users {
           if($hashMatch == 0){
             header('Location: index.php?controller=outside&action=main&what');
           }else{
-            session_start();
+            
             $con = Db::connect();
-            $select = "SELECT * FROM user WHERE email=\"{$_POST["email"]}\" AND password=\"{$row[password]}\"";
+            $select = "SELECT * FROM user WHERE email=\"{$_POST["email"]}\" AND password=\"{$row['password']}\"";
             $result = mysqli_fetch_assoc(mysqli_query($con,$select));
             if (isset($result['id'])){
             $_SESSION["userId"] = $result['id'];
+
             header("Location: index.php?controller=feed&action=main");
             }
           }
@@ -139,9 +140,10 @@ Class Users {
 
   public function checkLoggedIn()
   {
+
     if (!$this->userLoggedIn)
     {
-      header("location: index.php?controller=outside&action=main");
+      header("location: index.php?controller=outside&action=main&huh");
     }
   }
 

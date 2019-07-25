@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 function autoloadFunction($class) {
   $controllersPath = 'controllers/' . $class . '.php';
   $modelsPath = 'models/' . $class . '.php';

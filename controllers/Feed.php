@@ -13,7 +13,8 @@ Class Feed extends Controller {
   public function pretrip()
   {
     // this one, we DO care if the user is logged in...
-    $this->user = new Users();
+
+    $this->user = Users::getUser($_SESSION['userId']);
     $this->user->checkLoggedIn();
     
   }
