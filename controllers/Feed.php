@@ -3,6 +3,22 @@ Class Feed extends Controller {
   public function __construct() {}
 
   public function main() {
+    
+    $this->description = "";
+    $this->pageTitle = "Dashboard | ";
+   
+    $this->user = Users::getUser($_SESSION["userId"]);
+    $this->memory = Memory::getMemory($_SESSION["userId"]);
+
+    $this->mainBody .= $this->renderView("upload");
+    $this->mainBody .= $this->renderView("feed_tiles");
+
+    include("views/template.php");
+  }
+
+  public function saveMemory() {
+    $this->user = Users::getUser($_POST["userId"]);
+    Memory::saveMemory($_POST["userId"]);
   }
 
   public function likeitem()
