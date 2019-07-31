@@ -23,7 +23,7 @@ Class Memory {
     }
     $user = $_POST['userId'];
     $title = $_POST['title'];
-    $description = $_POST['description'];
+    $description = "";
     $timestamp = date("Ymd");
     $caption = $_POST['caption'];
     $categoryId = "1";
