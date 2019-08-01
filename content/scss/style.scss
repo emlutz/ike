@@ -1,0 +1,20 @@
+@import "base/base";
+@import "mixins/mixins";
+@import "layout/layout";
+
+@include mq-sp() {
+}
+
+@include mq-tb() {
+}
+@include mq-pc() {
+}
+
+// .stickers {
+//   @include mq-sp() {
+//     display: none;
+//   }
+// }
+
+@media only screen and (max-width: 767px) {
+}

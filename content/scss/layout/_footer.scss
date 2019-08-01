@@ -1,0 +1,15 @@
+footer {
+  padding-top: 2%;
+  text-align: center;
+  height: 10%;
+  background: rgb(75, 74, 74);
+  position: fixed;
+  bottom: 0;
+  @include mq-sp() {
+    
+    }
+  i {
+    color: white;
+    font-size: 70px;
+  }
+}
