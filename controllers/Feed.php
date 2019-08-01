@@ -40,5 +40,12 @@ Class Feed extends Controller {
     
     
   }
+
+  public function showProfile() {
+    $this->user = Users::getUser($_SESSION["userId"]);
+    $this->mainBody .= $this->renderView("profile");
+ 
+    include("views/template.php");
+  }
 }
 ?>
