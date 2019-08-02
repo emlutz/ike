@@ -37,7 +37,7 @@ Class Memory {
     $userId = filter_var($userId, FILTER_SANITIZE_NUMBER_INT);
     $memories = array();
     $con = Db::connect();
-    $select = "SELECT * FROM memory WHERE userId = '".$userId."'";
+    $select = "SELECT * FROM memory WHERE userId = '".$userId."' ORDER BY id DESC";
     $result = mysqli_query($con, $select);
     while($record = mysqli_fetch_assoc($result)) {
       $memories[] = $record;

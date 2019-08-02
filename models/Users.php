@@ -8,7 +8,7 @@ Class Users {
       $this->name = $data["name"];
       $this->photo = $data["photo"];
       $this->userLoggedIn = true;
-      $this->cont = "profile";
+      $this->cont = "feed";
     } else {
       $this->id = "";
       $this->email = "";
@@ -76,7 +76,7 @@ Class Users {
         $result = mysqli_query($con, $select);
         $verb = "updated";
 
-        $url = "index.php?controller=profile&action=main";
+        $url = "index.php?controller=feed&action=showProfile";
       } else {
         $hashedPass = password_hash($password, PASSWORD_DEFAULT);
         $con = Db::connect();

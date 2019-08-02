@@ -21,11 +21,6 @@ Class Feed extends Controller {
     Memory::saveMemory($_POST["userId"]);
   }
 
-  public function likeitem()
-  {
-
-  }
-
   public function pretrip()
   {
     // this one, we DO care if the user is logged in...
@@ -46,6 +41,21 @@ Class Feed extends Controller {
     $this->mainBody .= $this->renderView("profile");
  
     include("views/template.php");
+  }
+
+  public function editProfile() {
+    $this->user = Users::getUser($_SESSION["userId"]);
+    $this->mainBody .=$this->renderView("userForm");
+
+    include("Views/template.php");
+  }
+
+  public function userProfile() {
+    Users::saveUser();
+  }
+  
+  public function logout() {
+    Users::logout();
   }
 }
 ?>
