@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="reg_frm">
+    <div class="reg_frm2">
       <form action="index.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="controller" value="<?=$this->user->cont?>">
         <input type="hidden" name="action" value="userProfile">
@@ -32,7 +32,7 @@
         </label>
         <input id="file-upload" type="file" name="photo">
 
-        <input class="log btn" type="submit" name="submit" value="Register">
+        <input class="log btn" type="submit" name="submit" value="SAVE">
       </form>
     </div>
   </div>
