@@ -49,7 +49,7 @@ Class Feed extends Controller {
     $this->mainBody .=$this->renderView("editUserForm");
     $this->navTitle = "Edit Profile";
 
-    include("Views/template.php");
+    include("views/template.php");
   }
 
   public function userProfile() {
