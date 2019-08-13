@@ -1,0 +1,463 @@
+// Grid and Breakpoints ----------------------------/
+
+$grid-columns:      12;
+$grid-gutter-width: 30px;
+
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 576px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 1200px,
+  // Extra large screen / wide desktop
+  xl: 1680px
+);
+
+// Fonts and Colors ----------------------------/
+$h1-big: 50px;
+$h1: 40px;
+$h2: 30px;
+$h3: 26px;
+$h4: 20px;
+$p: 18px;
+$p2: 15px;
+
+$white: #FFFFFF;
+$black: #000000;
+$pink: #ff7677;
+$pink2: #f9b1a5;
+$grey: #333232;
+$lgrey: #5e5e5e;
+
+$font1: 'Montserrat', sans-serif;
+
+// Styling ------------------------------------/
+
+*{
+  box-sizing: border-box;
+  font-family: $font1;
+  transition: all .4s ease-in;
+}
+html{
+  scroll-behavior: smooth;
+}
+// toggle styles -------/
+.blind{
+  display: none;
+}
+.show{
+  display: block;
+}
+.drop{
+  top: 0px;
+}
+.rise{
+  top: -160px;
+}
+// iPhone 6/7/8 ------/
+@media (max-width: 575.98px) {
+  // Login/Register Page ---------------------------------/
+  .outhead{
+    text-align: center;
+    width: 100%;
+    margin-bottom: 25px;
+    img{
+      margin-top:80px;
+      margin-bottom: 20px;
+    }
+  }
+  .reg_frm{
+    display: none;
+    background: $black;
+    padding: 30px 10px;
+    margin: 0px 40px;
+    border-radius: 10px;
+    form{
+      display: block;
+      text-align: center;
+      color: $white;
+      label{
+        display: none;
+      }
+      input{
+        background-color: transparent;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 3px solid $pink;
+        border-radius: 10px;
+        width: 240px;
+        color: $white;
+      }
+      input[type="file"] {
+        display: none;
+      }
+      .custom-file-upload {
+        border: 3px solid $pink;
+        display: inline-block;
+        width: 240px;
+        padding: 10px;
+        cursor: pointer;
+        background-color: transparent;
+        margin-bottom: 20px;
+        border-radius: 10px;
+      }
+      .log{
+        margin-top: 25px;
+        width: 175px;
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+  .login{
+    background: $black;
+    padding: 30px 10px;
+    margin: 0px 40px;
+    border-radius: 10px;
+    #log_frm{
+      display: block;
+      text-align: center;
+      color: $white;
+      label{
+        display: none;
+      }
+      input{
+        background-color: transparent;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 3px solid $pink;
+        border-radius: 10px;
+        color: $white;
+      }
+      .log{
+        margin-top: 25px;
+        width: 175px;
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+    .regi{
+      text-align: center;
+      #reg_btn{
+        width: 100%;
+        padding: 10px;
+        color: $lgrey;
+        font-size: $p2;
+        font-weight: 600;
+      }
+    }
+  }
+  // Header/Nav --------------------------------/
+  .logo{
+    position: fixed;
+    top: 15px;
+    left: 0px;
+    width: 150px;
+    z-index: 2;
+  }
+  .dashtitle{
+    z-index: 3;
+    p{
+      position: fixed;
+      top: 60px;
+      left: 20px;
+      color: $pink2;
+      font-weight: 600;
+      
+    }
+  }
+  .navbar{
+    padding: 0px;
+    #menuToggle {
+      display: block;
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 2;
+      -webkit-user-select: none;
+      user-select: none; 
+    }
+    #menuToggle input {
+      display: block;
+      width: 40px;
+      height: 32px;
+      position: absolute;
+      top: -7px;
+      left: -5px;
+      cursor: pointer;
+      opacity: 0;
+      z-index: 3;
+    }
+    #menuToggle {
+      span {
+        display: block;
+        width: 30px;
+        height: 4px;
+        margin-bottom: 5px;
+        position: relative;
+        background: $white;
+        border-radius: 3px;
+        z-index: 2;
+        transform-origin: 4px 0px;
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease; 
+      }
+      span:nth-child(3){
+        width: 20px;
+        margin-left: 10px;
+      }
+    }
+    #menu {
+      position: fixed;
+      left: 0px;
+      width: 100vw;
+      height: 460px;
+      background: url('../imgs/nav_bg.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      list-style-type: none;
+      margin-bottom: 40px;
+      z-index: 1;
+      transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+      ul{
+        list-style: none;
+        margin-top: 58px;
+        a{
+          li {
+            padding: 5px 15px;
+            font-size: $p;
+            text-align: right;
+            color: $white;
+            img{
+              text-align: right;
+              margin-top: 45px;
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              border: 3px solid $white;
+            }
+          }
+        }
+      }
+    }
+  }
+  // Footer ---------------------------------/
+  footer{
+    background-color: $grey;
+    position: fixed;
+    bottom: 0px;
+    .bot_nav{
+      display: inline-block;
+      width: 33%;
+      text-align: center;
+      padding: 20px 0px;
+      i{
+        color: $white;
+        font-size: $h4;
+      }
+    }
+  }
+  // Dashboard ---------------------------------/
+  //Tutroial ------------/
+  .tutorial{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 5;
+    #can{
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 5;
+      color: $white;
+      font-size: $h4;
+    }
+  }
+  // Upload Card-------/
+  .upload{
+    margin: 140px 15px 0px 15px;
+    padding: 30px;
+    text-align: center;
+    background: $black;
+    border-radius: 10px;
+    position: relative;
+    z-index: 3;
+    i{
+      font-size: $h1;
+      color: $pink2;
+    }
+    .fa-times-circle{
+      font-size: $h3;
+      color: $grey;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+    input{
+      display: block;
+      background-color: transparent;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 3px solid $pink;
+      border-radius: 10px;
+      width: 100%;
+      color: $white;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    .custom-file-uploads {
+      margin-top: 25px;
+      border: 3px solid $pink;
+      display: inline-block;
+      padding: 10px;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.2);
+      margin-bottom: 20px;
+      border-radius: 10px;
+      width: 100%;
+      i{
+        font-size: $h1;
+        color: $white;
+        margin: 10px;
+      }
+      p{
+        color: $white;
+        margin-bottom: 0px;
+      }
+    }
+    .btn-3{
+      display: block;
+      text-align: center;
+      color: $white;
+      font-size: $h3;
+    }
+    label{
+      display: none;
+    }
+    #save{
+      margin: 0 auto;
+      color: $white;
+      margin-top: 25px;
+      width: 175px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+  // Feed Cards-------/
+  .feed{
+    margin-top: 120px;
+    margin-bottom: 82px;
+    h2{
+      margin-left: 15px;
+      font-weight: 600;
+    }
+    .feed_card{
+      margin: 0px 15px;
+      margin-bottom: 20px;
+      background-color: $black;
+      border: 3px solid $pink;
+      border-radius: 10px;
+      img.card-img-top{
+        border-radius: 10px;
+        padding: 10px;
+        height: 250px;
+        background-size: contain;
+      }
+      .details{
+        color: $white;
+        padding-left: 10px;
+      }
+    }
+  }
+  // Profile Page ---------------------------------/
+  .profile{
+    width: 100vw;
+    padding: 15px;
+    .profile_photo{
+      margin-top: 130px;
+      text-align: center;
+      img{
+        border: 3px solid $pink;
+        background-color: $black;
+        border-radius: 50%;
+        width: 70%;
+      }
+      a{
+        position: absolute;
+        margin-left: -50px;
+        margin-top: 180px;
+        i{
+          height: 44px;
+          width: 44px;
+          vertical-align: middle;
+          background-color: $white;
+          padding: 14px 5px 5px 7px;
+          border-radius: 50%;
+          color: $black;
+        }
+      }
+    }
+    .profile_details{
+      padding: 30px;
+      padding-top: 120px;
+      margin-top: -100px;
+      text-align: center;
+      background: $black;
+      border-radius: 15px;
+      color: $white;
+      a{
+        margin-top: 20px;
+        border: 3px solid $pink;
+        padding: 10px;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.2);
+        margin-bottom: 20px;
+        border-radius: 10px;
+        width: 80%;
+      }
+    }
+  }
+  // Edit Profile------------- /
+  .reg_frm2{
+    background: $black;
+    padding: 30px 10px;
+    margin: 0px 30px;
+    margin-top: 140px;
+    border-radius: 10px;
+    form{
+      display: block;
+      text-align: center;
+      color: $white;
+      label{
+        display: none;
+      }
+      input{
+        background-color: transparent;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 3px solid $pink;
+        border-radius: 10px;
+        width: 240px;
+        color: $white;
+      }
+      input[type="file"] {
+        display: none;
+      }
+      .custom-file-upload {
+        border: 3px solid $pink;
+        display: inline-block;
+        width: 240px;
+        padding: 10px;
+        cursor: pointer;
+        background-color: transparent;
+        margin-bottom: 20px;
+        border-radius: 10px;
+      }
+      .log{
+        margin-top: 25px;
+        width: 175px;
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+}
