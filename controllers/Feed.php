@@ -6,7 +6,7 @@ Class Feed extends Controller {
     
     $this->description = "";
     $this->pageTitle = "Dashboard | ";
-   
+    $this->navTitle = "Welcome ".$this->user->name."!";
     $this->user = Users::getUser($_SESSION["userId"]);
     $this->memory = Memory::getMemory($_SESSION["userId"]);
 
@@ -39,13 +39,15 @@ Class Feed extends Controller {
   public function showProfile() {
     $this->user = Users::getUser($_SESSION["userId"]);
     $this->mainBody .= $this->renderView("profile");
+    $this->navTitle = "Profile";
  
     include("views/template.php");
   }
 
   public function editProfile() {
     $this->user = Users::getUser($_SESSION["userId"]);
-    $this->mainBody .=$this->renderView("userForm");
+    $this->mainBody .=$this->renderView("editUserForm");
+    $this->navTitle = "Edit Profile";
 
     include("Views/template.php");
   }

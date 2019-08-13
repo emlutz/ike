@@ -7,11 +7,12 @@ Class Outside extends Controller {
     $this->description = "";
     $this->pageTitle = "Home | ";
 
+    $this->mainBody .= $this->renderView("out_head");
     $this->mainBody .= $this->renderView("userForm");
     $this->mainBody .= $this->renderView("modal");
     // $this->mainBody .= $this->renderView("home");
 
-    include("views/template.php");
+    include("views/out_template.php");
   }
 
   public function login() {
