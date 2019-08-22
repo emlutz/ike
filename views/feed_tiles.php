@@ -14,7 +14,7 @@
     foreach($this->memories as $mem){
       ?>
       <div class="card feed_card">
-        <img class="card-img-top" src="assets/<?=$mem["path"]?>" alt="thumbnail">
+        <img class="card-img-top" src="assets/<?=$mem->path?>" alt="thumbnail">
         <div class="details">
           <h4><?=$mem->title?></h4>
           <p><?=$mem->caption?></p>
