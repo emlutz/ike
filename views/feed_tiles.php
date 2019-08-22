@@ -1,6 +1,6 @@
 <div class="feed">
   <?php
-  if($this->memory == null) {
+  if($this->memories == null) {
   ?>
     <div class="tutorial">
       <i id="can" class="far fa-times-circle"></i>
@@ -11,13 +11,13 @@
     ?>
     <h2>FEED</h2>
     <?php
-    foreach($this->memory as $mem){
+    foreach($this->memories as $mem){
       ?>
       <div class="card feed_card">
         <img class="card-img-top" src="assets/<?=$mem["path"]?>" alt="thumbnail">
         <div class="details">
-          <h4><?=$mem["title"]?></h4>
-          <p><?=$mem["caption"]?></p>
+          <h4><?=$mem->title?></h4>
+          <p><?=$mem->caption?></p>
         </div>
         <div class="actions">
           <a href=""></a>

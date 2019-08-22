@@ -8,7 +8,7 @@ Class Feed extends Controller {
     $this->pageTitle = "Dashboard | ";
     $this->navTitle = "Welcome ".$this->user->name."!";
     $this->user = Users::getUser($_SESSION["userId"]);
-    $this->memory = Memory::getMemory($_SESSION["userId"]);
+    $this->memories = Memories::getMemories($_SESSION["userId"]);
 
     $this->mainBody .= $this->renderView("upload");
     $this->mainBody .= $this->renderView("feed_tiles");
